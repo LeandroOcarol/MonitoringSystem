@@ -8,20 +8,17 @@
 </head>
 <body>
     <nav>
-        <span class="nav-brand">College of Computer Studies Sit-in Monitoring System</span>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
+        <span class="nav-brand">Dashboard</span>
+        <ul class="nav-links">      
             <li class="dropdown">
                 <a href="#">Community ▾</a>
-                <div class="dropdown-menu">
-                    <a href="#">Forum</a>
-                    <a href="#">Events</a>
-                    <a href="#">Members</a>
-                </div>
             </li>
+            <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="login.php">Login</a></li>
-            <li><a href="Register.php">Register</a></li>
+            <li><a href="#">Edit Profile</a></li>
+            <li><a href="#">History</a></li>
+            <li><a href="#">Reservation</a></li>
+            <li><a href="#">LOG OUT</a></li>
         </ul>
     </nav>
 
