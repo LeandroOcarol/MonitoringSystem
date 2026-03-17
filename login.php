@@ -13,11 +13,6 @@
             <li><a href="#">Home</a></li>
             <li class="dropdown">
                 <a href="#">Community ▾</a>
-                <div class="dropdown-menu">
-                    <a href="#">Forum</a>
-                    <a href="#">Events</a>
-                    <a href="#">Members</a>
-                </div>
             </li>
             <li><a href="#">About</a></li>
             <li><a href="login.php">Login</a></li>
@@ -59,8 +54,6 @@
                 Don't have an account? <a href="Register.php">Register</a>
             </p>
         </div>
-
     </div>
-
 </body>
 </html>

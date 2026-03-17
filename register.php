@@ -1,6 +1,3 @@
-<?php
-// Frontend only - no backend logic
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="card">
         <div class="form-side">
             <a href="login.php" class="btn-back">← Back</a>
@@ -56,6 +52,21 @@
                     <select id="course" name="course">
                         <option value="BSIT">BSIT</option>
                         <option value="BSCS">BSCS</option>
+                        <option value="BSA">BSA</option>
+                        <option value="BSMA">BSMA</option>
+                        <option value="BSBA">BSBA</option>
+                        <option value="BSOA">BSOA</option>
+                        <option value="BSCE">BSCE</option>
+                        <option value="BSECE">BSECE</option>
+                        <option value="BSME">BSME</option>
+                        <option value="BSEE">BSEE</option>
+                        <option value="BSCrim">BSCrim</option>
+                        <option value="BEED">BEED</option>
+                        <option value="BSED">BSED</option>
+                        <option value="BSHM">BSHM</option>
+                        <option value="BSTM">BSTM</option>
+                        <option value="AB">AB</option>
+                        <option value="BSN">BSN</option>
                     </select>
                 </div>
 
@@ -70,9 +81,7 @@
                 </div>
 
                 <button type="submit" class="btn-primary">REGISTER</button>
-
             </form>
-
             <p class="bottom-link">
                 Already have an account? <a href="login.php">Login</a>
             </p>
