@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST["id"];
@@ -14,10 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $student = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($student && $password == $student["student_password"]) {
+            $_SESSION["id"] = $student["id"];
             header("Location: ../home.php");
             exit();
         } else {
-            header("Location: ../login.php");
+            header("Location: ../index.php");
             exit();
         }
 
@@ -25,6 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Query Failed: " . $e->getMessage());
     }
 } else {
-    header("Location: ../login.php");
+    header("Location: ../index.php");
     exit();
 }

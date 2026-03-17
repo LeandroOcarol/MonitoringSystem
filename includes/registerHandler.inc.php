@@ -18,11 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $pdo->prepare($query);
         $stmt->execute([$id, $last_name, $first_name, $middle_name, $password, $course, $course_level, $email, $address]);
 
-        header("Location: ../login.php");
+        header("Location: ../index.php");
         exit();
     } catch (PDOException $e) {
         die("Query Failed: " . $e->getMessage());
     }
 }else {
-    header("Location: ../login.php");
+    header("Location: ../index.php");
 }

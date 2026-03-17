@@ -51,7 +51,7 @@
             <button type="submit" class="btn-primary">LOGIN</button>
             </form>
             <p class="bottom-link">
-                Don't have an account? <a href="Register.php">Register</a>
+                Don't have an account? <a href="register.php">Register</a>
             </p>
         </div>
     </div>

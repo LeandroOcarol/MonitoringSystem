@@ -9,7 +9,7 @@
 <body>
     <div class="card">
         <div class="form-side">
-            <a href="login.php" class="btn-back">← Back</a>
+            <a href="index.php" class="btn-back">← Back</a>
             <h2 class="form-title">Sign <span>Up</span></h2>
             <form action="includes/registerHandler.inc.php" method="POST">
                 <div class="field-group">
@@ -91,7 +91,7 @@
                 <button type="submit" class="btn-primary">REGISTER</button>
             </form>
             <p class="bottom-link">
-                Already have an account? <a href="login.php">Login</a>
+                Already have an account? <a href="index.php">Login</a>
             </p>
         </div>
     </div>
