@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (!isset($_SESSION["id"])) {
+    header("Location: index.php");
+    exit();
+}
+
 require_once "includes/dbh.inc.php";
 
 $query = "SELECT * FROM students WHERE id = ?";
@@ -24,12 +29,12 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
             <li class="dropdown">
                 <a href="#">Community ▾</a>
             </li>
-            <li><a href="#">Home</a></li>
+            <li><a href="home.php">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Edit Profile</a></li>
+            <li><a href="editProfile.php">Edit Profile</a></li>
             <li><a href="#">History</a></li>
             <li><a href="#">Reservation</a></li>
-            <li><a href="#">LOG OUT</a></li>
+            <li><a href="logout.php">LOG OUT</a></li>
         </ul>
     </nav>
 
