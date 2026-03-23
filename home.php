@@ -20,10 +20,8 @@ require_once "includes/dbh.inc.php";
 <body>
     <nav>
         <span class="nav-brand">Dashboard</span>
-        <ul class="nav-links">      
-            <li class="dropdown">
-                <a href="#">Community ▾</a>
-            </li>
+        <ul class="nav-links">
+            <li class="dropdown"><a href="#">Community ▾</a></li>
             <li><a href="home.php">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="editProfile.php">Edit Profile</a></li>
@@ -34,7 +32,9 @@ require_once "includes/dbh.inc.php";
     </nav>
 
     <div class="card">
-        <h6>Login Successful</h6>
+        <div class="form-title">
+            <h6>Login Successful</h6>
+        </div>
     </div>
 </body>
 </html>

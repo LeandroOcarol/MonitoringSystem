@@ -71,7 +71,7 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 <div class="field-group">
                     <label for="repeat_password">Repeat your password</label>
-                    <input type="password" id="repeat_password">
+                    <input type="password" id="repeat_password" name="repeat_password">
                 </div>
 
                 <div class="field-group">

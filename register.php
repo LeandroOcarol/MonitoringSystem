@@ -1,13 +1,4 @@
-<?php
-session_start();
-
-if (!isset($_SESSION["id"])) {
-    header("Location: index.php");
-    exit();
-}
-
-require_once "includes/dbh.inc.php";
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +9,14 @@ require_once "includes/dbh.inc.php";
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
+    <?php if (isset($_SESSION["error"])): ?>
+        <script>
+            alert("<?php echo $_SESSION['error']; ?>");
+        </script>
+        <?php unset($_SESSION["error"]); ?>
+    <?php endif; ?>
+
     <div class="card">
         <div class="form-side">
             <a href="index.php" class="btn-back">← Back</a>
@@ -25,17 +24,17 @@ require_once "includes/dbh.inc.php";
             <form action="includes/registerHandler.inc.php" method="POST">
                 <div class="field-group">
                     <label for="id">ID Number</label>
-                    <input type="text" id="id" name="id">
+                    <input type="text" id="id" name="id" required>
                 </div>
 
                 <div class="field-group">
                     <label for="lName">Last Name</label>
-                    <input type="text" id="lName" name="lName">
+                    <input type="text" id="lName" name="lName" required>
                 </div>
 
                 <div class="field-group">
                     <label for="fName">First Name</label>
-                    <input type="text" id="fName" name="fName">
+                    <input type="text" id="fName" name="fName" required>
                 </div>
 
                 <div class="field-group">
@@ -45,22 +44,23 @@ require_once "includes/dbh.inc.php";
            
                 <div class="field-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password">
+                    <input type="password" id="password" name="password" required>
+                    <small class="field-hint">Minimum 8 characters</small>
                 </div>
 
                 <div class="field-group">
-                    <label for="">Repeat your password</label>
-                    <input type="password" id="" name="">
+                    <label for="repeat_password">Repeat your password</label>
+                    <input type="password" id="repeat_password" name="repeat_password" required>
                 </div>
 
                 <div class="field-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email">
+                    <input type="email" id="email" name="email" required>
                 </div>
 
                 <div class="field-group">
                     <label for="course">Course</label>
-                    <select id="course" name="course">
+                    <select id="course" name="course" required>
                         <option value="" disabled selected>-- Select Course --</option>
                         <option value="BSIT">BSIT - Bachelor of Science in Information Technology</option>
                         <option value="BSCS">BSCS - Bachelor of Science in Computer Science</option>
@@ -85,7 +85,7 @@ require_once "includes/dbh.inc.php";
 
                 <div class="field-group">
                     <label for="courseLevel">Course Level</label>
-                    <select id="courseLevel" name="courseLevel">
+                    <select id="courseLevel" name="courseLevel" required>
                         <option value="" disabled selected>-- Select Course Level --</option>
                         <option value="1">1st Year</option>
                         <option value="2">2nd Year</option>
@@ -96,7 +96,7 @@ require_once "includes/dbh.inc.php";
 
                 <div class="field-group">
                     <label for="address">Address</label>
-                    <input type="text" id="address" name="address">
+                    <input type="text" id="address" name="address" required>
                 </div>
 
                 <button type="submit" class="btn-primary">REGISTER</button>

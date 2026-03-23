@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 require_once "includes/dbh.inc.php";
 ?>
 
@@ -21,10 +20,24 @@ require_once "includes/dbh.inc.php";
                 <a href="#">Community ▾</a>
             </li>
             <li><a href="#">About</a></li>
-            <li><a href="login.php">Login</a></li>
+            <li><a href="#">Login</a></li>
             <li><a href="Register.php">Register</a></li>
         </ul>
     </nav>
+
+    <?php if (isset($_SESSION["error"])): ?>
+        <script>
+            alert("<?php echo $_SESSION['error']; ?>");
+        </script>
+        <?php unset($_SESSION["error"]); ?>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION["success"])): ?>
+        <script>
+            alert("<?php echo $_SESSION['success']; ?>");
+        </script>
+        <?php unset($_SESSION["success"]); ?>
+    <?php endif; ?>
 
     <div class="card">
         <div class="logo-side">
@@ -37,24 +50,24 @@ require_once "includes/dbh.inc.php";
             <h2 class="form-title">Welcome <span>Student</span></h2>
 
             <form action="includes/loginHandler.inc.php" method="POST">
-            <div class="field-group">
-                <label for="id">ID Number</label>
-                <input type="text" id="id" name="id">
-            </div>
+                <div class="field-group">
+                    <label for="id">ID Number</label>
+                    <input type="text" id="id" name="id">
+                </div>
 
-            <div class="field-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password">
-            </div>
+                <div class="field-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password">
+                </div>
 
-            <div class="options-row">
-                <label class="remember-label">
-                    <input type="checkbox" name="remember"> Remember me
-                </label>
-                <a href="#" class="forgot-link">Forgot password?</a>
-            </div>
+                <div class="options-row">
+                    <label class="remember-label">
+                        <input type="checkbox" name="remember"> Remember me
+                    </label>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
 
-            <button type="submit" class="btn-primary">LOGIN</button>
+                <button type="submit" class="btn-primary">LOGIN</button>
             </form>
             <p class="bottom-link">
                 Don't have an account? <a href="register.php">Register</a>
