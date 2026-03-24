@@ -249,3 +249,169 @@ form {
     text-decoration: underline;
 }
 
+/* ── Dashboard Layout ── */
+
+.dashboard-container {
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+    align-items: flex-start;
+}
+
+.dashboard-panel {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Left panel (Student Info) */
+.dashboard-panel:nth-child(1) {
+    width: 260px;
+    flex-shrink: 0;
+}
+
+/* Middle panel (Announcements) */
+.dashboard-panel:nth-child(2) {
+    flex: 1;
+}
+
+/* Right panel (Rules) */
+.dashboard-panel:nth-child(3) {
+    width: 320px;
+    flex-shrink: 0;
+}
+
+.panel-header {
+    background-color: rgba(124, 58, 237, 0.4);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.panel-body {
+    padding: 16px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+}
+
+/* Student Info Panel */
+.student-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.student-avatar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 6px;
+}
+
+.student-avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(167, 139, 250, 0.5);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.student-info hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.student-info p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.5;
+}
+
+.student-info p strong {
+    color: white;
+}
+
+/* Announcement Panel */
+.announcement-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.announcement-body hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.announcement-meta {
+    font-size: 13px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 6px;
+}
+
+.announcement-content {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+/* Rules Panel */
+.rules-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.rules-body p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+}
+
+.rules-institution {
+    font-size: 13px !important;
+    font-weight: bold !important;
+    color: white !important;
+    text-align: center !important;
+    line-height: 1.8 !important;
+}
+
+.rules-intro {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.rules-section-title {
+    font-weight: bold !important;
+    color: white !important;
+    font-size: 13px !important;
+    margin-top: 4px;
+}
+
+.rules-sublist {
+    list-style: disc;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.rules-sublist li {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.6;
+}
