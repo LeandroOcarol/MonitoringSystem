@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
+if (!isset($_SESSION["id"])) {
+    header("Location: index.php");
+    exit();
+}
+
+require_once("includes/dbh.inc.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,16 +25,18 @@
     <nav>
         <span class="nav-brand">Dashboard</span>
         <ul class="nav-links">
-            <li class="dropdown"><a href="#">Community ▾</a></li>
             <li><a href="home.php">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="editProfile.php">Edit Profile</a></li>
-            <li><a href="#">History</a></li>
+            <li><a href="#" onclick="openSearchModal()">Search</a></li>
+            <li><a href="#">Students</a></li>
+            <li><a href="#">Sit-in</a></li>
+            <li><a href="#">View Sit-in Records</a></li>
+            <li><a href="#">Sit-in Reports</a></li>
+            <li><a href="#">Feedback Reports</a></li>
             <li><a href="#">Reservation</a></li>
             <li><a href="logout.php">LOG OUT</a></li>
         </ul>
     </nav>
 
-    
+    <?php include 'search.php'; ?>
 </body>
 </html>

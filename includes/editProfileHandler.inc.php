@@ -15,6 +15,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         require_once "dbh.inc.php";
 
+        if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] === 0) {
+
+            $fileTmp = $_FILES['profile_image']['tmp_name'];
+            $fileName = $_FILES['profile_image']['name'];
+            $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+            $allowed = ['jpg', 'jpeg', 'png'];
+
+            if (in_array($fileExt, $allowed)) {
+
+                // NEW NAME
+                $newFileName = "IMG_" . $id . "." . $fileExt;
+                $uploadPath = "../images/students/" . $newFileName;
+
+                // MOVE FILE
+                move_uploaded_file($fileTmp, $uploadPath);
+
+                // UPDATE DATABASE
+                $imgQuery = "UPDATE students SET profile_image=? WHERE id=?";
+                $imgStmt = $pdo->prepare($imgQuery);
+                $imgStmt->execute([$newFileName, $id]);
+            }
+        }
+
+
         // Check if user wants to update password
         if (!empty($password)) {
             // Validate passwords match

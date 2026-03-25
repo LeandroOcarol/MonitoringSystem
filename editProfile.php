@@ -45,8 +45,12 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
     <div class="card">
         <div class="form-side">
             <h2 class="form-title">Edit <span>Profile</span></h2>
-            <form action="includes/editprofileHandler.inc.php" method="POST">
-
+            <form action="includes/editprofileHandler.inc.php" method="POST" enctype="multipart/form-data">
+                <div class="field-group">
+                    <div class="student-avatar">
+                        <img src="images/students/<?php echo $student['profile_image']; ?>" width="120" style="border-radius:50%;">
+                    </div>
+                </div>
                 <div class="field-group">
                     <label for="id">ID Number</label>
                     <input type="text" id="id" value="<?php echo $student['id']; ?>" disabled>
@@ -122,6 +126,11 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
                 <div class="field-group">
                     <label for="address">Address</label>
                     <input type="text" id="address" name="address" value="<?php echo $student['address']; ?>">
+                </div>
+
+                <div class="field-group">
+                    <label>Upload New Profile Image</label>
+                    <input type="file" name="profile_image" accept="image/*">
                 </div>
 
                 <button type="submit" class="btn-primary">SAVE CHANGES</button>

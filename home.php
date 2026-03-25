@@ -24,7 +24,7 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CCS Sit-in Monitoring System</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/MonitoringSystem/style.css">
 </head>
 <body>
     <nav>
@@ -47,7 +47,7 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="panel-header">Student Information</div>
             <div class="panel-body student-info">
                 <div class="student-avatar">
-                    <img src="images/students/123.jpg" alt="Avatar">
+                    <img src="images/students/<?php echo !empty($student['profile_image']) ? $student['profile_image'] : 'IMG_Default.jpg'; ?>" alt="Avatar">
                 </div>
                 <hr>
                 <p><strong>Name:</strong> <?php echo $student['first_name'] . ' ' . $student['middle_name'] . ' ' . $student['last_name']; ?></p>

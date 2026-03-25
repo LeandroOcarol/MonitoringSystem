@@ -42,9 +42,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
 
-        $query = "INSERT INTO students (id, last_name, first_name, middle_name, student_password, course, course_level, email, address) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $profile_image = "IMG_Default.jpg";
+
+        $query = "INSERT INTO students (
+            id, 
+            last_name, 
+            first_name, 
+            middle_name, 
+            student_password, 
+            course, 
+            course_level, 
+            email, 
+            address, 
+            profile_image) 
+            VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$id, $last_name, $first_name, $middle_name, $hashedPassword, $course, $course_level, $email, $address]);
+        $stmt->execute([
+            $id,
+            $last_name, 
+            $first_name, 
+            $middle_name, 
+            $hashedPassword, 
+            $course, 
+            $course_level, 
+            $email, 
+            $address, 
+            $profile_image]);
 
         $_SESSION["success"] = "Registration successful! You can now log in.";
         header("Location: ../index.php");

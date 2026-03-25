@@ -2,7 +2,7 @@
 
 $db = "mysql:host=localhost;dbname=monitoring_system";
 $dbusername = "root";
-$dbpassword = "";
+$dbpassword = "leandr0carol";
 
 try {
     $pdo = new PDO($db, $dbusername, $dbpassword);
