@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2026 at 03:44 PM
+-- Generation Time: Mar 25, 2026 at 05:11 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -36,15 +36,16 @@ CREATE TABLE `students` (
   `course` varchar(50) NOT NULL,
   `course_level` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `address` varchar(75) NOT NULL
+  `address` varchar(75) NOT NULL,
+  `profile_image` varchar(100) DEFAULT 'IMG_Default.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `last_name`, `first_name`, `middle_name`, `student_password`, `course`, `course_level`, `email`, `address`) VALUES
-(23798606, 'Ocarol', 'Leandro', 'Cabalda', '$2y$10$hPMpSW2uG8xLSR/D60ALFOo0dE3Uv2UXr4dWb6PrneeTdzHdq2zSy', 'BSIT', 3, 'ocaroleandro@gmail.com', 'Pasil, Cebu City');
+INSERT INTO `students` (`id`, `last_name`, `first_name`, `middle_name`, `student_password`, `course`, `course_level`, `email`, `address`, `profile_image`) VALUES
+(23798606, 'Ocarol', 'Leandro', 'Cabalda', '$2y$10$hPMpSW2uG8xLSR/D60ALFOo0dE3Uv2UXr4dWb6PrneeTdzHdq2zSy', 'BSIT', 3, 'ocaroleandro@gmail.com', 'Pasil, Cebu City', 'IMG_23798606.jpg');
 
 --
 -- Indexes for dumped tables
