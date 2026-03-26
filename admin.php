@@ -26,7 +26,7 @@ require_once("includes/dbh.inc.php");
         <span class="nav-brand">Dashboard</span>
         <ul class="nav-links">
             <li><a href="home.php">Home</a></li>
-            <li><a href="#" onclick="openSearchModal()">Search</a></li>
+            <li><a href="#" onclick="openSearch(); return false;">Search</a></li>
             <li><a href="#">Students</a></li>
             <li><a href="#">Sit-in</a></li>
             <li><a href="#">View Sit-in Records</a></li>

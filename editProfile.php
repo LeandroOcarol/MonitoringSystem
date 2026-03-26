@@ -52,6 +52,10 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
                     </div>
                 </div>
                 <div class="field-group">
+                    <label>Upload New Profile Image</label>
+                    <input type="file" name="profile_image" accept="image/*">
+                </div>
+                <div class="field-group">
                     <label for="id">ID Number</label>
                     <input type="text" id="id" value="<?php echo $student['id']; ?>" disabled>
                     <input type="hidden" name="id" value="<?php echo $student['id']; ?>">
@@ -126,11 +130,6 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
                 <div class="field-group">
                     <label for="address">Address</label>
                     <input type="text" id="address" name="address" value="<?php echo $student['address']; ?>">
-                </div>
-
-                <div class="field-group">
-                    <label>Upload New Profile Image</label>
-                    <input type="file" name="profile_image" accept="image/*">
                 </div>
 
                 <button type="submit" class="btn-primary">SAVE CHANGES</button>

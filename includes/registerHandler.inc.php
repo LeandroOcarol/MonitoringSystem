@@ -24,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         require_once "dbh.inc.php";
 
-        // Check if ID already exists
         $checkStmt = $pdo->prepare("SELECT id FROM students WHERE id = ?");
         $checkStmt->execute([$id]);
         if ($checkStmt->fetch()) {
@@ -33,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
 
-        // Check if email already exists
         $checkEmail = $pdo->prepare("SELECT id FROM students WHERE email = ?");
         $checkEmail->execute([$email]);
         if ($checkEmail->fetch()) {

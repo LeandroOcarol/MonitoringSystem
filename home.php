@@ -42,7 +42,6 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
 
     <div class="dashboard-container">
 
-        <!-- Student Information Panel -->
         <div class="dashboard-panel">
             <div class="panel-header">Student Information</div>
             <div class="panel-body student-info">
@@ -59,7 +58,6 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
             </div>
         </div>
 
-        <!-- Announcement Panel -->
         <div class="dashboard-panel">
             <div class="panel-header">&#128227; Announcement</div>
             <div class="panel-body announcement-body">
@@ -76,7 +74,6 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
             </div>
         </div>
 
-        <!-- Rules and Regulation Panel -->
         <div class="dashboard-panel">
             <div class="panel-header">Rules and Regulation</div>
             <div class="panel-body rules-body">

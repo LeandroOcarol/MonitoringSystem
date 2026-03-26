@@ -25,14 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (in_array($fileExt, $allowed)) {
 
-                // NEW NAME
                 $newFileName = "IMG_" . $id . "." . $fileExt;
                 $uploadPath = "../images/students/" . $newFileName;
 
-                // MOVE FILE
                 move_uploaded_file($fileTmp, $uploadPath);
 
-                // UPDATE DATABASE
                 $imgQuery = "UPDATE students SET profile_image=? WHERE id=?";
                 $imgStmt = $pdo->prepare($imgQuery);
                 $imgStmt->execute([$newFileName, $id]);
@@ -40,21 +37,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
 
-        // Check if user wants to update password
         if (!empty($password)) {
-            // Validate passwords match
             if ($password !== $repeat_password) {
                 header("Location: ../editProfile.php?error=password_mismatch");
                 exit();
             }
-            // Hash new password
             $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
             $query = "UPDATE students SET last_name = ?, first_name = ?, middle_name = ?, email = ?, course = ?, course_level = ?, address = ?, student_password = ? WHERE id = ?";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$last_name, $first_name, $middle_name, $email, $course, $course_level, $address, $hashedPassword, $id]);
         } else {
-            // Update without changing the password
             $query = "UPDATE students SET last_name = ?, first_name = ?, middle_name = ?, email = ?, course = ?, course_level = ?, address = ? WHERE id = ?";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$last_name, $first_name, $middle_name, $email, $course, $course_level, $address, $id]);

@@ -45,7 +45,7 @@
                 <div class="field-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
-                    <small class="field-hint">Minimum 8 characters</small>
+                    <small class="field-hint" style="text-white">Minimum 8 characters</small>
                 </div>
 
                 <div class="field-group">
