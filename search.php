@@ -1,11 +1,12 @@
 <?php
 require_once("includes/dbh.inc.php");
 
-if (isset($_GET['search_student'])) {
-    $id = $_GET['student_id'];
 
-    $query = "SELECT id, first_name, last_name FROM students WHERE id = ?";
-    $stmt = $pdo->prepare($query);
+if (isset($_GET['search_student'])) {
+    $id = trim($_GET['student_id']);
+
+    $query = "SELECT id, first_name, last_name, Session FROM students WHERE id = ?";
+    $stmt  = $pdo->prepare($query);
     $stmt->execute([$id]);
     $student = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -14,11 +15,29 @@ if (isset($_GET['search_student'])) {
             'found'     => true,
             'id_number' => $student['id'],
             'full_name' => $student['first_name'] . ' ' . $student['last_name'],
-            'session'   => 30
+            'session'   => $student['Session']
         ]);
     } else {
         echo json_encode(['found' => false]);
     }
+    exit();
+}
+
+if (isset($_POST['sitin_submit'])) {
+    $id_number = trim($_POST['id_number']);
+    $purpose   = $_POST['purpose'];
+    $lab       = trim($_POST['lab']);
+
+    $check = $pdo->prepare("SELECT Session FROM students WHERE id = ?");
+    $check->execute([$id_number]);
+    $row = $check->fetch(PDO::FETCH_ASSOC);
+
+    if ($row && $row['Session'] > 0) {
+        $update = $pdo->prepare("UPDATE students SET Session = Session - 1 WHERE id = ?");
+        $update->execute([$id_number]);
+    }
+
+    header("Location: admin.php");
     exit();
 }
 ?>
@@ -82,7 +101,7 @@ if (isset($_GET['search_student'])) {
 
 <script>
 function openSearch() {
-    document.getElementById('searchInput').value = '';
+    document.getElementById('searchInput').value    = '';
     document.getElementById('searchMsg').textContent = '';
     document.getElementById('searchModal').style.display = 'flex';
 }
@@ -96,17 +115,15 @@ function closeSitin() {
 }
 
 function searchStudent() {
-    var id = document.getElementById('searchInput').value;
+    var id = document.getElementById('searchInput').value.trim();
 
-    if (id == '') {
+    if (id === '') {
         document.getElementById('searchMsg').textContent = 'Please enter a student ID.';
         return;
     }
 
-    fetch('search.php?search_student=1&student_id=' + id)
-        .then(function(response) {
-            return response.json();
-        })
+    fetch('search.php?search_student=1&student_id=' + encodeURIComponent(id))
+        .then(function(response) { return response.json(); })
         .then(function(data) {
             if (data.found) {
                 document.getElementById('show_id').value      = data.id_number;
@@ -120,8 +137,8 @@ function searchStudent() {
         });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('searchInput').addEventListener('keydown', function(e) {
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('searchInput').addEventListener('keydown', function (e) {
         if (e.key === 'Enter') searchStudent();
     });
 });

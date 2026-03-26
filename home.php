@@ -13,7 +13,7 @@ if (!isset($_SESSION["id"])) {
 require_once "includes/dbh.inc.php";
 
 $query = "SELECT * FROM students WHERE id = ?";
-$stmt = $pdo->prepare($query);
+$stmt  = $pdo->prepare($query);
 $stmt->execute([$_SESSION["id"]]);
 $student = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -30,7 +30,7 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
     <nav>
         <span class="nav-brand">Dashboard</span>
         <ul class="nav-links">
-            <li class="dropdown"><a href="#">Notification ▾</a></li>
+            <li class="dropdown"><a href="#">Notification &#9662;</a></li>
             <li><a href="home.php">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="editProfile.php">Edit Profile</a></li>
@@ -46,15 +46,16 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="panel-header">Student Information</div>
             <div class="panel-body student-info">
                 <div class="student-avatar">
-                    <img src="images/students/<?php echo !empty($student['profile_image']) ? $student['profile_image'] : 'IMG_Default.jpg'; ?>" alt="Avatar">
+                    <img src="images/students/<?php echo !empty($student['profile_image']) ? htmlspecialchars($student['profile_image']) : 'IMG_Default.jpg'; ?>" alt="Avatar">
                 </div>
                 <hr>
-                <p><strong>Name:</strong> <?php echo $student['first_name'] . ' ' . $student['middle_name'] . ' ' . $student['last_name']; ?></p>
-                <p><strong>Course:</strong> <?php echo $student['course']; ?></p>
-                <p><strong>Year:</strong> <?php echo $student['course_level']; ?></p>
-                <p><strong>Email:</strong> <?php echo $student['email']; ?></p>
-                <p><strong>Address:</strong> <?php echo $student['address']; ?></p>
-                <p><strong>Session:</strong> 30</p>
+                <p><strong>Name:</strong> <?php echo htmlspecialchars($student['first_name'] . ' ' . $student['middle_name'] . ' ' . $student['last_name']); ?></p>
+                <p><strong>Course:</strong> <?php echo htmlspecialchars($student['course']); ?></p>
+                <p><strong>Year:</strong> <?php echo htmlspecialchars($student['course_level']); ?></p>
+                <p><strong>Email:</strong> <?php echo htmlspecialchars($student['email']); ?></p>
+                <p><strong>Address:</strong> <?php echo htmlspecialchars($student['address']); ?></p>
+                <!-- Session is read live from the database -->
+                <p><strong>Session:</strong> <?php echo (int) $student['Session']; ?></p>
             </div>
         </div>
 
@@ -77,7 +78,7 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
         <div class="dashboard-panel">
             <div class="panel-header">Rules and Regulation</div>
             <div class="panel-body rules-body">
-                <p class="rules-institution">University of Cebu<br>COLLEGE OF INFORMATION & COMPUTER STUDIES<br><br>LABORATORY RULES AND REGULATIONS</p>
+                <p class="rules-institution">University of Cebu<br>COLLEGE OF INFORMATION &amp; COMPUTER STUDIES<br><br>LABORATORY RULES AND REGULATIONS</p>
                 <p class="rules-intro">To avoid embarrassment and maintain camaraderie with your friends and superiors at our laboratories, please observe the following:</p>
                 <p>1. Maintain silence, proper decorum, and discipline inside the laboratory. Mobile phones, walkmans and other personal pieces of equipment must be switched off.</p>
                 <p>2. Games are not allowed inside the lab. This includes computer-related games, card games and other games that may disturb the operation of the lab.</p>

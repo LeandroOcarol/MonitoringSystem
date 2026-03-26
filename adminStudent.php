@@ -22,12 +22,13 @@ require_once("includes/dbh.inc.php");
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+     <?php include 'adminStudentHandler.php'; ?>
     <nav>
         <span class="nav-brand">Dashboard</span>
         <ul class="nav-links">
             <li><a href="admin.php">Home</a></li>
             <li><a href="#" onclick="openSearch(); return false;">Search</a></li>
-            <li><a href="adminStudent.php">Students</a></li>
+            <li><a href="#">Students</a></li>
             <li><a href="#">Sit-in</a></li>
             <li><a href="#">View Sit-in Records</a></li>
             <li><a href="#">Sit-in Reports</a></li>
@@ -36,7 +37,6 @@ require_once("includes/dbh.inc.php");
             <li><a href="logout.php">LOG OUT</a></li>
         </ul>
     </nav>
-
-    <?php include 'search.php'; ?>
+        <button class="btn-back">Reset All Session</button>
 </body>
 </html>
