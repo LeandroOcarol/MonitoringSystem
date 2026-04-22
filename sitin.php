@@ -3,7 +3,7 @@ session_start();
 require_once("includes/dbh.inc.php");
 
 $stmt = $pdo->query("
-    SELECT * FROM sit_ins 
+    SELECT * FROM sit_ins
     ORDER BY sit_id DESC
 ");
 
@@ -38,6 +38,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="panel-header">CURRENT SIT-IN</div>
 
+    <!-- SEARCH + SHOW ENTRIES (KEPT UNCHANGED) -->
     <div class="table-controls" style="display:flex; justify-content:space-between; margin-bottom:20px;">
         <div class="field-group">
             <label>Show</label>
@@ -54,7 +55,9 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
+    <!-- TABLE -->
     <table class="data-table">
+
         <thead>
             <tr>
                 <th>Sit ID</th>
@@ -62,7 +65,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th>Purpose</th>
                 <th>Lab</th>
                 <th>Status</th>
-                <th>Created</th>
+                <th>Action</th>
             </tr>
         </thead>
 
@@ -75,7 +78,23 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?= $row['purpose'] ?></td>
                     <td><?= $row['lab'] ?></td>
                     <td><?= $row['status'] ?></td>
-                    <td><?= $row['created_at'] ?></td>
+
+                    <!-- ACTION -->
+                    <td>
+                        <?php if ($row['status'] === 'ACTIVE'): ?>
+                            <form method="POST" action="logout_sitin.php" style="display:inline;">
+                                <input type="hidden" name="sit_id" value="<?= $row['sit_id'] ?>">
+                                <button type="submit" class="modal-btn-close">
+                                    Log-out
+                                </button>
+                            </form>
+                        <?php else: ?>
+                            <span style="color:rgba(255,255,255,0.4); font-size:12px;">
+                                Done
+                            </span>
+                        <?php endif; ?>
+                    </td>
+
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
@@ -84,8 +103,10 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </tr>
         <?php endif; ?>
         </tbody>
+
     </table>
 
+    <!-- PAGINATION (KEPT UNCHANGED) -->
     <div class="pagination">
         <button class="pagination-btn">&lt;</button>
         <button class="pagination-btn">1</button>
@@ -94,6 +115,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 </div>
 
+<!-- MODALS (UNCHANGED) -->
 <?php include 'includes/modals.php'; ?>
 <script src="includes/modals.js"></script>
 
