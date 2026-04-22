@@ -22,7 +22,7 @@ require_once("includes/dbh.inc.php");
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-     <?php include 'adminStudentHandler.php'; ?>
+    <?php include 'includes/adminStudentHandler.inc.php'; ?>
     <nav>
         <span class="nav-brand">Dashboard</span>
         <ul class="nav-links">
@@ -38,5 +38,11 @@ require_once("includes/dbh.inc.php");
         </ul>
     </nav>
         <button class="btn-back">Reset All Session</button>
+
+
+
+<?php include 'includes/modals.php'; ?>
+
+<script src="includes/modals.js"></script>
 </body>
 </html>

@@ -22,21 +22,25 @@ require_once("includes/dbh.inc.php");
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <span class="nav-brand">Dashboard</span>
-        <ul class="nav-links">
-            <li><a href="admin.php">Home</a></li>
-            <li><a href="#" onclick="openSearch(); return false;">Search</a></li>
-            <li><a href="adminStudent.php">Students</a></li>
-            <li><a href="#">Sit-in</a></li>
-            <li><a href="#">View Sit-in Records</a></li>
-            <li><a href="#">Sit-in Reports</a></li>
-            <li><a href="#">Feedback Reports</a></li>
-            <li><a href="#">Reservation</a></li>
-            <li><a href="logout.php">LOG OUT</a></li>
-        </ul>
-    </nav>
 
-    <?php include 'search.php'; ?>
+<nav>
+    <span class="nav-brand">Dashboard</span>
+    <ul class="nav-links">
+        <li><a href="admin.php">Home</a></li>
+        <li><a href="#" onclick="openSearch(); return false;">Search</a></li>
+        <li><a href="adminStudent.php">Students</a></li>
+        <li><a href="sitin.php">Sit-in</a></li>
+        <li><a href="#">View Sit-in Records</a></li>
+        <li><a href="#">Sit-in Reports</a></li>
+        <li><a href="#">Feedback Reports</a></li>
+        <li><a href="#">Reservation</a></li>
+        <li><a href="logout.php">LOG OUT</a></li>
+    </ul>
+</nav>
+
+<?php include 'includes/modals.php'; ?>
+
+<script src="includes/modals.js"></script>
+
 </body>
 </html>

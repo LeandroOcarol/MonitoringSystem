@@ -582,3 +582,81 @@ form {
 .modal-btn-full:hover {
     background: #6d28d9;
 }
+
+/* ── Table Styling ── */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: white;
+}
+
+.data-table th {
+    text-align: left;
+    padding: 14px 16px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.data-table td {
+    padding: 14px 16px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.data-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* ── Pagination Styling ── */
+.pagination {
+    display: flex;
+    gap: 5px;
+    margin-top: 20px;
+}
+
+.pagination-btn {
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.pagination-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ── Specific Overrides for the Table Panel Header ── */
+.table-panel .panel-header {
+    font-size: 20px;       /* Makes the text bigger */
+    text-align: center;    /* Centers the text */
+    padding: 16px;         /* Adds extra space for the larger text */
+}
+
+/* ── Full Width Container for Tables ── */
+.full-width-content {
+    width: 95%;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Ensure the table header is centered and big as requested */
+.full-width-content .panel-header {
+    font-size: 24px;
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
