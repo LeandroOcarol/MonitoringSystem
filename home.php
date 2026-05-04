@@ -16,8 +16,11 @@ $query = "SELECT * FROM students WHERE id = ?";
 $stmt  = $pdo->prepare($query);
 $stmt->execute([$_SESSION["id"]]);
 $student = $stmt->fetch(PDO::FETCH_ASSOC);
-?>
 
+// Read announcements from DB
+$announcements = $pdo->query("SELECT * FROM announcements ORDER BY created_at DESC")
+                      ->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +45,7 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
 
     <div class="dashboard-container">
 
+        <!-- Student Info Panel -->
         <div class="dashboard-panel">
             <div class="panel-header">Student Information</div>
             <div class="panel-body student-info">
@@ -54,27 +58,34 @@ $student = $stmt->fetch(PDO::FETCH_ASSOC);
                 <p><strong>Year:</strong> <?php echo htmlspecialchars($student['course_level']); ?></p>
                 <p><strong>Email:</strong> <?php echo htmlspecialchars($student['email']); ?></p>
                 <p><strong>Address:</strong> <?php echo htmlspecialchars($student['address']); ?></p>
-                <!-- Session is read live from the database -->
-                <p><strong>Session:</strong> <?php echo (int) $student['Session']; ?></p>
+                <p><strong>Session:</strong> <?php echo (int) $student['session']; ?></p>
             </div>
         </div>
 
+        <!-- Announcement Panel — live from DB -->
         <div class="dashboard-panel">
             <div class="panel-header">&#128227; Announcement</div>
             <div class="panel-body announcement-body">
-                <div class="announcement-item">
-                    <p class="announcement-meta">CCS Admin | 2026-Feb-11</p>
-                </div>
-                <hr>
-                <div class="announcement-item">
-                    <p class="announcement-meta">CCS Admin | 2024-May-08</p>
-                    <div class="announcement-content">
-                        <p>Important Announcement We are excited to announce the launch of our new website! 🎉 Explore our latest products and services now!</p>
-                    </div>
-                </div>
+                <?php if (empty($announcements)): ?>
+                    <p style="font-size:13px; color:rgba(255,255,255,0.4);">No announcements yet.</p>
+                <?php else: ?>
+                    <?php foreach ($announcements as $i => $a): ?>
+                        <?php if ($i > 0): ?><hr><?php endif; ?>
+                        <div class="announcement-item">
+                            <p class="announcement-meta">
+                                <?php echo htmlspecialchars($a['posted_by']); ?> |
+                                <?php echo date('Y-M-d', strtotime($a['created_at'])); ?>
+                            </p>
+                            <div class="announcement-content">
+                                <p><?php echo nl2br(htmlspecialchars($a['content'])); ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
 
+        <!-- Rules Panel -->
         <div class="dashboard-panel">
             <div class="panel-header">Rules and Regulation</div>
             <div class="panel-body rules-body">

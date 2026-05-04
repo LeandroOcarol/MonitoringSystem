@@ -17,8 +17,8 @@ $lab = $_POST['lab'];
 try {
 
     $stmt = $pdo->prepare("
-        INSERT INTO sit_ins (student_id, purpose, lab, status)
-        VALUES (?, ?, ?, 'ACTIVE')
+        INSERT INTO sit_ins (student_id, purpose, lab, time_in, status)
+        VALUES (?, ?, ?, NOW(), 'ACTIVE')
     ");
 
     $stmt->execute([$student_id, $purpose, $lab]);

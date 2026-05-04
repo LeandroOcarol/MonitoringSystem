@@ -4,7 +4,7 @@ require_once("includes/dbh.inc.php");
 
 $stmt = $pdo->query("
     SELECT * FROM sit_ins
-    WHERE status = 'ACTIVE'
+    WHERE status = 'COMPLETED'
     ORDER BY sit_id DESC
 ");
 
@@ -15,7 +15,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Current Sit-in</title>
+<title>Sit-in Records</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -37,10 +37,10 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="full-width-content">
 
-    <div class="panel-header">CURRENT SIT-IN</div>
+    <div class="panel-header">SIT-IN RECORDS</div>
 
     <!-- SEARCH + SHOW ENTRIES (KEPT UNCHANGED) -->
-    <div class="table-controls" style="display:flex; justify-content:space-between; margin-bottom:20px;">
+    <div class="table-controls">
 
         <div class="field-group">
             <input type="text" placeholder="Search...">
@@ -56,8 +56,9 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th>Student ID</th>
                 <th>Purpose</th>
                 <th>Lab</th>
+                <th>Time In</th>
+                <th>Time Out</th>
                 <th>Status</th>
-                <th>Action</th>
             </tr>
         </thead>
 
@@ -69,20 +70,21 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?= $row['student_id'] ?></td>
                     <td><?= $row['purpose'] ?></td>
                     <td><?= $row['lab'] ?></td>
-                    <td><?= $row['status'] ?></td>
-
-                    <!-- ACTION -->
+                    <td><?= isset($row['time_in']) ? $row['time_in'] : '-' ?></td>
+                    <td><?= isset($row['time_out']) ? $row['time_out'] : '-' ?></td>
                     <td>
-                        <button type="button" class="modal-btn-close" onclick="logoutSitin(<?= $row['sit_id'] ?>)">
-                            Log-out
-                        </button>
+                        <span style="padding:4px 8px; border-radius:4px; font-size:12px; font-weight:bold;
+                            <?= $row['status'] === 'ACTIVE' 
+                                ? 'background-color:#10b981; color:white;' 
+                                : 'background-color:#6b7280; color:white;' ?>">
+                            <?= $row['status'] ?>
+                        </span>
                     </td>
-
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
             <tr>
-                <td colspan="6" class="no-data">No data available</td>
+                <td colspan="7" class="no-data">No data available</td>
             </tr>
         <?php endif; ?>
         </tbody>
@@ -100,7 +102,6 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <!-- MODALS (UNCHANGED) -->
 <?php include 'includes/modals.php'; ?>
-<script src="includes/modals.js"></script>
 
 </body>
 </html>

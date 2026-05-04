@@ -660,3 +660,429 @@ form {
     margin-bottom: 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+.admin-students .btn-action {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    backdrop-filter: blur(10px);
+    transition: 0.2s;
+}
+
+/* Edit button (matches purple theme) */
+.admin-students .btn-edit {
+    background-color: rgba(124, 58, 237, 0.6);
+    color: white;
+}
+
+.admin-students .btn-edit:hover {
+    background-color: rgba(124, 58, 237, 0.9);
+    border-color: rgba(167, 139, 250, 0.6);
+}
+
+/* Delete button (soft danger style, not too harsh) */
+.admin-students .btn-delete {
+    background-color: rgba(239, 68, 68, 0.6);
+    color: white;
+}
+
+.admin-students .btn-delete:hover {
+    background-color: rgba(239, 68, 68, 0.9);
+    border-color: rgba(248, 113, 113, 0.6);
+}
+
+/* Optional: spacing between buttons */
+.admin-students td .btn-action {
+    margin-right: 6px;
+}
+
+.admin-students .action-group {
+    display: flex;
+    gap: 6px;
+}
+
+/* ════════════════════════════════════════════
+   ADD THESE NEW RULES TO THE BOTTOM OF style.css
+   Do not replace your existing CSS — just append
+════════════════════════════════════════════ */
+
+/* ── Top Controls Row (Add + Reset buttons) ── */
+.table-controls-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.controls-left {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn-add {
+    padding: 8px 16px;
+    background-color: #7c3aed;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+}
+
+.btn-add:hover {
+    background-color: #6d28d9;
+}
+
+.btn-reset {
+    padding: 8px 16px;
+    background-color: #cc0033;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+}
+
+.btn-reset:hover {
+    background-color: #aa0022;
+}
+
+/* ── Entries per page + Search row ── */
+.table-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.entries-control select {
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+    margin: 0 6px;
+    outline: none;
+    cursor: pointer;
+}
+
+.entries-control select option {
+    background-color: #1e1e1e;
+}
+
+.search-control input {
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+    margin-left: 6px;
+    outline: none;
+    width: 180px;
+    transition: border-color 0.2s;
+}
+
+.search-control input:focus {
+    border-color: rgba(124, 58, 237, 0.6);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── Sortable column headers ── */
+.data-table th.sortable {
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.data-table th.sortable:hover {
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(124, 58, 237, 0.15);
+}
+
+.sort-icon {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.35);
+    margin-left: 4px;
+}
+
+/* ── Action cell buttons ── */
+.action-cell {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.btn-edit {
+    padding: 5px 14px;
+    background-color: #2563eb;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-edit:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-delete {
+    padding: 5px 12px;
+    background-color: #dc2626;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-delete:hover {
+    background-color: #b91c1c;
+}
+
+/* ── Table footer: info + pagination ── */
+.table-footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 18px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.table-info {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.pagination {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.pagination-btn {
+    padding: 5px 11px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: rgba(124, 58, 237, 0.4);
+    border-color: rgba(124, 58, 237, 0.6);
+}
+
+.pagination-btn.active {
+    background: #7c3aed;
+    border-color: #7c3aed;
+    font-weight: bold;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.pagination-ellipsis {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 13px;
+    padding: 0 4px;
+}
+
+/* ════════════════════════════════════════════
+   APPEND THESE RULES TO THE BOTTOM OF style.css
+════════════════════════════════════════════ */
+
+/* ── Admin Home: two-column layout ── */
+.admin-home-container {
+    display: flex;
+    gap: 20px;
+    padding: 25px;
+    align-items: flex-start;
+}
+
+.admin-panel {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#stats-panel {
+    flex: 1;
+    min-width: 0;
+}
+
+#announcement-panel {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ── Stats rows ── */
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-row:last-of-type {
+    border-bottom: none;
+}
+
+.stat-label {
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.stat-value {
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* ── Pie chart wrapper ── */
+.chart-wrapper {
+    margin-top: 20px;
+    width: 100%;
+    max-height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-wrapper canvas {
+    max-height: 300px;
+}
+
+/* ── Announcement form ── */
+.announcement-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.announce-label {
+    font-size: 13px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.announce-textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px 12px;
+    background-color: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    color: white;
+    font-size: 13px;
+    resize: vertical;
+    outline: none;
+    font-family: Arial, sans-serif;
+    transition: border-color 0.2s;
+}
+
+.announce-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.announce-textarea:focus {
+    border-color: rgba(124, 58, 237, 0.6);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-announce {
+    align-self: flex-start;
+    padding: 8px 22px;
+    background-color: #16a34a;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-announce:hover {
+    background-color: #15803d;
+}
+
+/* ── Posted announcements list ── */
+.posted-header {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.posted-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.posted-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.posted-meta {
+    font-size: 13px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.posted-content {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.6;
+    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: 6px;
+    padding: 8px 12px;
+}
+
+.no-announce {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.35);
+    font-style: italic;
+}

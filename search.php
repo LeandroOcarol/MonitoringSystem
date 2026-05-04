@@ -24,7 +24,7 @@ if ($row) {
         "found" => true,
         "id" => $row['id'],
         "name" => $fullName,
-        "session" => $row['Session']
+        "session" => $row['session']
     ]);
 
 } else {
