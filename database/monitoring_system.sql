@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2026 at 08:47 PM
+-- Generation Time: May 04, 2026 at 03:15 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,6 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `announcements`
+--
+
+CREATE TABLE `announcements` (
+  `id` int(11) NOT NULL,
+  `posted_by` varchar(100) NOT NULL DEFAULT 'CCS Admin',
+  `content` text NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `announcements`
+--
+
+INSERT INTO `announcements` (`id`, `posted_by`, `content`, `created_at`) VALUES
+(1, 'CCS Admin', 'Hello USers', '2026-04-24 11:22:21'),
+(2, 'CCS Admin', 'Hello Good Noon Users', '2026-04-24 11:26:16');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sit_ins`
 --
 
@@ -32,15 +53,20 @@ CREATE TABLE `sit_ins` (
   `student_id` int(11) NOT NULL,
   `purpose` varchar(100) NOT NULL,
   `lab` varchar(50) NOT NULL,
-  `status` varchar(20) DEFAULT 'ACTIVE'
+  `status` varchar(20) DEFAULT 'ACTIVE',
+  `time_in` datetime DEFAULT NULL,
+  `time_out` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `sit_ins`
 --
 
-INSERT INTO `sit_ins` (`sit_id`, `student_id`, `purpose`, `lab`, `status`) VALUES
-(1, 23798606, 'C Programming', '525', 'ACTIVE');
+INSERT INTO `sit_ins` (`sit_id`, `student_id`, `purpose`, `lab`, `status`, `time_in`, `time_out`) VALUES
+(1, 23798606, 'C Programming', '525', 'COMPLETED', '2026-05-04 20:23:20', '2026-05-04 20:54:29'),
+(2, 23798606, 'C Programming', '525', 'COMPLETED', '2026-05-04 20:23:20', '2026-05-04 20:44:33'),
+(3, 23798606, 'Java Programming', '526', 'COMPLETED', '2026-05-04 20:28:57', '2026-05-04 20:39:22'),
+(4, 23798606, 'Java Programming', '526', 'COMPLETED', '2026-05-04 20:55:21', '2026-05-04 20:55:31');
 
 -- --------------------------------------------------------
 
@@ -59,23 +85,25 @@ CREATE TABLE `students` (
   `email` varchar(50) NOT NULL,
   `address` varchar(75) NOT NULL,
   `profile_image` varchar(100) DEFAULT 'IMG_Default.jpg',
-  `Session` int(11) DEFAULT 30
+  `session` int(11) DEFAULT 30
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `last_name`, `first_name`, `middle_name`, `student_password`, `course`, `course_level`, `email`, `address`, `profile_image`, `Session`) VALUES
-(1234, 'oracxol', 'leandro', 's', '$2y$10$.juy2dAS3cAriI2y6YBLDu04WhD89OJJZhNQOsGVbTNWeeUKgodea', 'BEED', 3, 'orakol@gmail.com', 'ormoc', 'IMG_1234.jpg', 30),
-(12345, 'Sermonia', 'John Carlo ', 'Dominguez', '$2y$10$0W6a/c6UxghdaNhSF7P0F.d16Qdqtz5c4TzWFSsLhfgFkcCpWhVK6', 'BSIT', 3, 'carlosermonia14@gmail.com', 'Lapu Lapu', 'IMG_Default.jpg', 30),
-(123456, 'Carlo', 'Sermonia', 'Dominguez', '$2y$10$qtYgEBe0P38jZaivahNDje3gUm/fhV1LnkZMze1me57S0Y0DqYwG6', 'BSED', 3, 'Carlo123@gmail.com', 'Suba, Cebu City', 'IMG_Default.jpg', 29),
-(23792344, 'Aranez', 'AxelJake', '', '$2y$10$Qvs.CxpVDe4QyN8vcas/FuUl56KALBLLmBfDuHdl1b0WBzuVGjcq2', 'BSIT', 3, 'axeljake@gmail.com', 'lahug', 'IMG_Default.jpg', 30),
-(23798606, 'Ocarol', 'Leandro', 'Cabalda', '$2y$10$hPMpSW2uG8xLSR/D60ALFOo0dE3Uv2UXr4dWb6PrneeTdzHdq2zSy', 'BSIT', 3, 'ocaroleandro@gmail.com', 'Pasil, Cebu City', 'IMG_23798606.jpg', 27);
+INSERT INTO `students` (`id`, `last_name`, `first_name`, `middle_name`, `student_password`, `course`, `course_level`, `email`, `address`, `profile_image`, `session`) VALUES
+(23798606, 'Ocarol', 'Dwen', 'Cabalda', '$2y$10$hPMpSW2uG8xLSR/D60ALFOo0dE3Uv2UXr4dWb6PrneeTdzHdq2zSy', 'BSCS', 4, 'ocaroleandro@gmail.com', 'Pasil, Cebu City', 'IMG_23798606.jpg', 28);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `announcements`
+--
+ALTER TABLE `announcements`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `sit_ins`
@@ -95,10 +123,16 @@ ALTER TABLE `students`
 --
 
 --
+-- AUTO_INCREMENT for table `announcements`
+--
+ALTER TABLE `announcements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `sit_ins`
 --
 ALTER TABLE `sit_ins`
-  MODIFY `sit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `sit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
