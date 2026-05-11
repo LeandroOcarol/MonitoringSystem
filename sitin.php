@@ -16,7 +16,8 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
 <meta charset="UTF-8">
 <title>Current Sit-in</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
 
@@ -40,10 +41,9 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="panel-header">CURRENT SIT-IN</div>
 
     <!-- SEARCH + SHOW ENTRIES (KEPT UNCHANGED) -->
-    <div class="table-controls" style="display:flex; justify-content:space-between; margin-bottom:20px;">
-
-        <div class="field-group">
-            <input type="text" placeholder="Search...">
+    <div class="table-controls">
+        <div class="field-group" style="flex:1; min-width:240px;">
+            <input type="text" class="input-field" placeholder="Search...">
         </div>
     </div>
 
@@ -69,12 +69,12 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?= $row['student_id'] ?></td>
                     <td><?= $row['purpose'] ?></td>
                     <td><?= $row['lab'] ?></td>
-                    <td><?= $row['status'] ?></td>
+                    <td><span class="status-pill active"><?= htmlspecialchars($row['status']) ?></span></td>
 
                     <!-- ACTION -->
                     <td>
-                        <button type="button" class="modal-btn-close" onclick="logoutSitin(<?= $row['sit_id'] ?>)">
-                            Log-out
+                        <button type="button" class="btn-signout" onclick="logoutSitin(<?= $row['sit_id'] ?>)">
+                            Sign Out
                         </button>
                     </td>
 

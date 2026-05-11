@@ -16,7 +16,8 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
 <meta charset="UTF-8">
 <title>Sit-in Records</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
 
@@ -73,11 +74,8 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <td><?= isset($row['time_in']) ? $row['time_in'] : '-' ?></td>
                     <td><?= isset($row['time_out']) ? $row['time_out'] : '-' ?></td>
                     <td>
-                        <span style="padding:4px 8px; border-radius:4px; font-size:12px; font-weight:bold;
-                            <?= $row['status'] === 'ACTIVE' 
-                                ? 'background-color:#10b981; color:white;' 
-                                : 'background-color:#6b7280; color:white;' ?>">
-                            <?= $row['status'] ?>
+                        <span class="status-pill <?= strtolower($row['status']) ?>">
+                            <?= htmlspecialchars($row['status']) ?>
                         </span>
                     </td>
                 </tr>

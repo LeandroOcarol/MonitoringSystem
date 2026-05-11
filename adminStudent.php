@@ -17,7 +17,8 @@ require_once("includes/dbh.inc.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Students Information | CCS Sit-in Monitoring System</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 
 <body class="admin-students">
@@ -76,6 +77,7 @@ require_once("includes/dbh.inc.php");
                 $stmt = $pdo->query($query);
 
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $studentName = htmlspecialchars($row['first_name'] . ' ' . $row['last_name'], ENT_QUOTES);
                     echo "<tr>
                             <td>{$row['id']}</td>
                             <td>{$row['first_name']} {$row['last_name']}</td>
@@ -84,11 +86,13 @@ require_once("includes/dbh.inc.php");
                             <td>{$row['session']}</td>
                             <td class='action-cell'>
                                 <button class='btn-edit' onclick='openEditModal({$row['id']})'>Edit</button>
+                                <button class='btn-sitin' type='button' data-id=\"{$row['id']}\" data-name=\"{$studentName}\" data-session=\"{$row['session']}\" onclick='openSitInModal(this)'>Sit-in</button>
                                 <button class='btn-delete' onclick='deleteStudent({$row['id']})'>Delete</button>
                             </td>
                           </tr>";
                 }
                 ?>
+
             </tbody>
         </table>
 
@@ -100,6 +104,22 @@ require_once("includes/dbh.inc.php");
     </div>
 
     <?php include 'includes/modals.php'; ?>
+
+<script>
+function openSitInModal(button) {
+    const studentId = button.dataset.id || '';
+    const studentName = button.dataset.name || '';
+    const studentSession = button.dataset.session || '';
+    document.getElementById('show_id').value = studentId;
+    document.getElementById('show_name').value = studentName;
+    document.getElementById('show_session').value = studentSession;
+    document.getElementById('purpose').value = '';
+    document.getElementById('lab').value = '';
+    const sitinMsg = document.getElementById('sitinMsg');
+    if (sitinMsg) sitinMsg.textContent = '';
+    document.getElementById('sitinModal').style.display = 'flex';
+}
+</script>
 
 </body>
 </html>
